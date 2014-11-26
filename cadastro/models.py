@@ -8,6 +8,22 @@ Status_Lista = (
     ('I', 'Inativo')
 )
 
+class Cidade(models.Model):
+    status = models.CharField(u'Satus', max_length=1, default='A',
+                              choices=Status_Lista)
+    descricao = models.CharField(u'Descrição', max_length=70)
+    uf = models.CharField(u'Estado', max_length=2)
+    cod_municipio = models.IntegerField(u'Cod. Município')
+    cod_estado = models.IntegerField(u'Cod. Estado')
+    pais = models.CharField(u'País', max_length=50)
+    cod_pais = models.IntegerField(u'Cod. País')
+
+    class Meta:
+        ordering = ['uf', 'descricao']
+
+    def __unicode__(self):
+        return self.descricao + ' / ' + self.uf
+
 class Contato(models.Model):
     status = models.CharField(verbose_name=u'Status', max_length=1, default='A', choices=Status_Lista)
     nome = models.CharField(verbose_name=u'Nome', max_length=50)

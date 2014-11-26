@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>Lista de cidades</h1>
+
+ <table>
+     <thead>
+        <th>Codigo</th>
+        <th>Nome da Cidade</th>
+        <th>Estado</th>
+        <th>Ações</th>
+     </thead>
+     <tbody>
+        {%  for i in cidades %}
+           <tr>
+                <td>{{ i.pk }}</td>
+                <td>{{ i.descricao }}</td>
+                <td>{{ i.uf }}</td>
+                <td>
+                    <a href="/cidade/{{ i.pk }}">Editar</a>
+                    <a href="/cidade/excluir/{{ i.pk }}">Excluir</a>
+                </td>
+           </tr>
+        {% endfor %}
+     </tbody>
+ </table>
+
+</body>
+</html>
